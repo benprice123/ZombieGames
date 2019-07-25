@@ -17,6 +17,9 @@ namespace ZombieGame
             InitializeComponent();
         }
 
-       
+        private void pnlGame_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

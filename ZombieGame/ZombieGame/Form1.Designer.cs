@@ -45,7 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblScoretitle = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.lblLives = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -60,6 +60,7 @@
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(400, 400);
             this.pnlGame.TabIndex = 0;
+            this.pnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlGame_Paint);
             // 
             // menuStrip1
             // 
@@ -118,7 +119,7 @@
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(71, 32);
+            this.txtName.Location = new System.Drawing.Point(66, 35);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 26);
             this.txtName.TabIndex = 7;
@@ -147,7 +148,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(6, 35);
+            this.lblName.Location = new System.Drawing.Point(1, 35);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(59, 20);
             this.lblName.TabIndex = 3;
@@ -163,21 +164,21 @@
             this.lblScoretitle.TabIndex = 4;
             this.lblScoretitle.Text = "Score :";
             // 
-            // label2
+            // label
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 269);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Lives :";
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(6, 269);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(53, 20);
+            this.label.TabIndex = 5;
+            this.label.Text = "Lives :";
             // 
             // lblLives
             // 
             this.lblLives.AutoSize = true;
             this.lblLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLives.Location = new System.Drawing.Point(65, 269);
+            this.lblLives.Location = new System.Drawing.Point(62, 269);
             this.lblLives.Name = "lblLives";
             this.lblLives.Size = new System.Drawing.Size(18, 20);
             this.lblLives.TabIndex = 9;
@@ -201,7 +202,7 @@
             this.groupBox1.Controls.Add(this.lblScore);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label);
             this.groupBox1.Controls.Add(this.lblScoretitle);
             this.groupBox1.Controls.Add(this.lblName);
             this.groupBox1.Location = new System.Drawing.Point(427, 27);
@@ -249,7 +250,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblScoretitle;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label lblLives;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.GroupBox groupBox1;
