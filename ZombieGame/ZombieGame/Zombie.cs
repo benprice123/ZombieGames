@@ -19,10 +19,10 @@ namespace ZombieGame
         //set x to spacing y to -20, width 20 height 20
         //Get the zombie image from files
         //set rectangle to x,y,width and height
-        public Zombie(int xspacing, int yspacing)
+        public Zombie(int xspacing)
         {
             x = xspacing;
-            y = yspacing;
+            y = -20;
             width = 20;
             height = 20;
             zombieImage = Image.FromFile("Zombie1.png");
@@ -32,7 +32,18 @@ namespace ZombieGame
         //methods for the zombie class
         //draw zombie
         //this draws the zombie and rectangle
+        public void drawZombie (Graphics g)
+        {
+            zombieRec = new Rectangle(x, y, width, height);
+            g.DrawImage(zombieImage, zombieRec);
+        }
 
+        //Move Zombie1
+        //This will move the zombie down the game panel
+        //and if it is greater than 400 on the y axis of the 
+        //game panel go back to y -20 and change zombie rectangle
+        //to location of zombie
+        // GOING TO CHANGE SO THAT THE ZOMBIE CHASES PLAYER
         public void moveZombie1(Graphics g)
         {
             y += 5;
