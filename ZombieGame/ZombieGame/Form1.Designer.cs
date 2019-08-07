@@ -56,6 +56,7 @@
             // 
             // pnlGame
             // 
+            this.pnlGame.BackColor = System.Drawing.Color.DimGray;
             this.pnlGame.Location = new System.Drawing.Point(12, 99);
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(400, 400);
@@ -215,7 +216,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(634, 511);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblTitle);

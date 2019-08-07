@@ -19,7 +19,7 @@ namespace ZombieGame
         //set x to spacing y to -20, width 20 height 20
         //Get the zombie image from files
         //set rectangle to x,y,width and height
-        public Zombie(int xspacing)
+        public Zombie(int xspacing )
         {
             x = xspacing;
             y = -20;

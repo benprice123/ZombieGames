@@ -11,7 +11,7 @@ namespace ZombieGame
     class Player
     {
         //declare fields to use in the player class
-        public Matrix matrix;
+        //public Matrix matrix;
         public int x, y, height, width;
         public Image player;
         public Rectangle playerRec;
@@ -27,7 +27,7 @@ namespace ZombieGame
             y = 175;
             width = 30;
             height = 30;
-            player = Image.FromFile("player.png");
+            player = Image.FromFile("Player.png");
             playerRec = new Rectangle(x, y, width, height);
         }
         
