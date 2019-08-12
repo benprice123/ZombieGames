@@ -82,30 +82,35 @@
             this.mnuStart.Name = "mnuStart";
             this.mnuStart.Size = new System.Drawing.Size(43, 20);
             this.mnuStart.Text = "Start";
+            this.mnuStart.Click += new System.EventHandler(this.mnuStart_Click);
             // 
             // mnuStop
             // 
             this.mnuStop.Name = "mnuStop";
             this.mnuStop.Size = new System.Drawing.Size(43, 20);
             this.mnuStop.Text = "Stop";
+            this.mnuStop.Click += new System.EventHandler(this.mnuStop_Click);
             // 
             // mnuRestart
             // 
             this.mnuRestart.Name = "mnuRestart";
             this.mnuRestart.Size = new System.Drawing.Size(55, 20);
             this.mnuRestart.Text = "Restart";
+            this.mnuRestart.Click += new System.EventHandler(this.mnuRestart_Click);
             // 
             // mnuHighscores
             // 
             this.mnuHighscores.Name = "mnuHighscores";
             this.mnuHighscores.Size = new System.Drawing.Size(78, 20);
             this.mnuHighscores.Text = "Highscores";
+            this.mnuHighscores.Click += new System.EventHandler(this.mnuHighscores_Click);
             // 
             // mnuQuit
             // 
             this.mnuQuit.Name = "mnuQuit";
             this.mnuQuit.Size = new System.Drawing.Size(42, 20);
             this.mnuQuit.Text = "Quit";
+            this.mnuQuit.Click += new System.EventHandler(this.mnuQuit_Click);
             // 
             // lblTitle
             // 
@@ -224,6 +229,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form";
+            this.Load += new System.EventHandler(this.Form_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
