@@ -79,6 +79,11 @@ namespace ZombieGame
 
         }
 
+        private void tmrPlayer_Tick(object sender, EventArgs e)
+        {
+          
+        }
+
         private void Form_Load(object sender, EventArgs e)
         {
             //set score and missed to 0

@@ -11,7 +11,9 @@ namespace ZombieGame
     class Player
     {
         //declare fields to use in the player class
-        //public Matrix matrix;
+        public int rotationAngle;
+        Point centre;
+        public Matrix matrix;
         public int x, y, height, width;
         public Image player;
         public Rectangle playerRec;
@@ -38,6 +40,14 @@ namespace ZombieGame
 
         public void drawPlayer (Graphics g)
         {
+            centre = new Point(playerRec.X + width / 2, playerRec.Y + width / 2);
+
+            matrix = new Matrix();
+
+            matrix.RotateAt(rotationAngle, centre);
+
+            g.Transform = matrix;
+
             playerRec = new Rectangle(x, y, width, height);
             g.DrawImage(player, playerRec);
         }

@@ -112,6 +112,10 @@
             this.mnuQuit.Text = "Quit";
             this.mnuQuit.Click += new System.EventHandler(this.mnuQuit_Click);
             // 
+            // tmrPlayer
+            // 
+            this.tmrPlayer.Tick += new System.EventHandler(this.tmrPlayer_Tick);
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
