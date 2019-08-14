@@ -29,6 +29,7 @@ namespace ZombieGame
             y = 175;
             width = 30;
             height = 30;
+            rotationAngle = 0;
             player = Image.FromFile("Player.png");
             playerRec = new Rectangle(x, y, width, height);
         }

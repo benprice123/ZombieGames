@@ -22,13 +22,15 @@ namespace ZombieGame
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right, up, down;
-        public int score;
+        public int score, lives;
         string playerName;
 
         private void mnuStart_Click(object sender, EventArgs e)
         {
 
             lblScore.Text = score.ToString(); //Send the score to the label Score
+            lblLives.Text = lives.ToString();
+
             playerName = txtName.Text;
 
             if (Regex.IsMatch(playerName, @"^[a-zA-Z]+$"))//checks playerName for letters
@@ -39,6 +41,7 @@ namespace ZombieGame
                 tmrZombie1.Enabled = true;
                 tmrZombie2.Enabled = false;
                 tmrBullet.Enabled = true;
+                txtName.Enabled = false;
 
             }
             else
@@ -79,15 +82,50 @@ namespace ZombieGame
 
         }
 
+        private void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = true; } //left key pressed
+            if (e.KeyData == Keys.Right) { right = true; } //right key pressed
+            if (e.KeyData == Keys.Up) { up = true; } //up key pressed
+            if (e.KeyData == Keys.Down) { down = true; } //down key pressed
+        }
+
+        private void Form_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = false; } //left key released
+            if (e.KeyData == Keys.Right) { right = false; } //right key released
+            if (e.KeyData == Keys.Up) { up = false; } //up key released
+            if (e.KeyData == Keys.Down) { down = false; } //down key released
+        }
+
         private void tmrPlayer_Tick(object sender, EventArgs e)
         {
-          
+          if(left)
+            {
+                player.rotationAngle -= 10;
+            }
+
+          if(right)
+            {
+                player.rotationAngle += 10;
+            }
+
+          if(up)
+            {
+                player.y += 1;
+            }
+
+          if(down)
+            {
+                player.y -= 1;
+            }
         }
 
         private void Form_Load(object sender, EventArgs e)
         {
             //set score and missed to 0
             score = 0;
+            lives = 3;
 
             //disable timers so nothing moves until start is pressed
             tmrPlayer.Enabled = false;
@@ -110,7 +148,7 @@ namespace ZombieGame
             //zombie spacing
             for (int i = 0; i < 3; i++)
             {
-                int spacing = 75 + (i * 150);
+                int spacing = 75 + (i * 40);
                 zombies.Add(new Zombie(spacing));
             }
         }
