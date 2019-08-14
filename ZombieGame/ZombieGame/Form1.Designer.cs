@@ -116,6 +116,10 @@
             // 
             this.tmrPlayer.Tick += new System.EventHandler(this.tmrPlayer_Tick);
             // 
+            // tmrZombie1
+            // 
+            this.tmrZombie1.Tick += new System.EventHandler(this.tmrZombie1_Tick);
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;

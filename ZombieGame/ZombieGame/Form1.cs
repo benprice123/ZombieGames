@@ -25,6 +25,58 @@ namespace ZombieGame
         public int score, lives;
         string playerName;
 
+        public Form()
+        {
+            InitializeComponent();
+
+            //stops flickering of the panel
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
+
+            //zombie spacing
+            for (int i = 0; i < 3; i++)
+            {
+                int spacing = 75 + (i * 40);
+                zombies.Add(new Zombie(spacing));
+            }
+        }
+
+
+        private void pnlGame_Paint(object sender, PaintEventArgs e)
+        {
+            g = e.Graphics;
+
+            foreach (Zombie z in zombies)
+            {
+
+                z.drawZombie(g);
+            }
+
+            foreach (Bullet b in bullet)
+            {
+                b.drawBullet(g);
+                b.moveBullet(g);
+            }
+
+            player.drawPlayer(g);
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            //set score and missed to 0
+            score = 0;
+            lives = 3;
+
+            //disable timers so nothing moves until start is pressed
+            tmrPlayer.Enabled = false;
+            tmrZombie1.Enabled = false;
+            // tmrZombie2.Enabled = false;
+
+            //Show game instructions and focus on text box name after closed
+            MessageBox.Show("Use the arrow keys to move player up,down,left and right and use the mouse to aim and shoot. /n Shoot as many zombies as you can before they catch you. /n Enter your name and press start to let the GAMES BEGIN!");
+            txtName.Focus();
+        }
+
+
         private void mnuStart_Click(object sender, EventArgs e)
         {
 
@@ -77,10 +129,28 @@ namespace ZombieGame
 
         }
 
+        private void tmrZombie1_Tick(object sender, EventArgs e)
+        {
+            foreach (Zombie z in zombies)
+            {
+                z.moveZombie1(g);
+                if (z.zombieRec.Location.Y >= 400)
+                {
+                    //missed += 1;
+                  //  lblMissed.Text = missed.ToString();
+                  //  checkMissed();
+                }
+                pnlGame.Invalidate();
+            }
+        }
+
         private void mnuHighscores_Click(object sender, EventArgs e)
         {
 
         }
+
+
+
 
         private void Form_KeyDown(object sender, KeyEventArgs e)
         {
@@ -97,6 +167,10 @@ namespace ZombieGame
             if (e.KeyData == Keys.Up) { up = false; } //up key released
             if (e.KeyData == Keys.Down) { down = false; } //down key released
         }
+
+
+
+
 
         private void tmrPlayer_Tick(object sender, EventArgs e)
         {
@@ -121,55 +195,9 @@ namespace ZombieGame
             }
         }
 
-        private void Form_Load(object sender, EventArgs e)
-        {
-            //set score and missed to 0
-            score = 0;
-            lives = 3;
+       
 
-            //disable timers so nothing moves until start is pressed
-            tmrPlayer.Enabled = false;
-            tmrZombie1.Enabled = false;
-           // tmrZombie2.Enabled = false;
-
-            //Show game instructions and focus on text box name after closed
-            MessageBox.Show("Use the arrow keys to move player up,down,left and right and use the mouse to aim and shoot. /n Shoot as many zombies as you can before they catch you. /n Enter your name and press start to let the GAMES BEGIN!");
-            txtName.Focus();
-        }
-
-
-        public Form()
-        {
-            InitializeComponent();
-
-            //stops flickering of the panel
-            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
-
-            //zombie spacing
-            for (int i = 0; i < 3; i++)
-            {
-                int spacing = 75 + (i * 40);
-                zombies.Add(new Zombie(spacing));
-            }
-        }
-
-        private void pnlGame_Paint(object sender, PaintEventArgs e)
-        {
-            g = e.Graphics;
-
-            foreach (Zombie z in zombies)
-            {
-                z.drawZombie(g);
-            }
-
-                foreach (Bullet b in bullet)
-                {
-                    b.drawBullet(g);
-                    b.moveBullet(g);
-                }
-
-                player.drawPlayer(g);
-            }
+        
         }
     }
 

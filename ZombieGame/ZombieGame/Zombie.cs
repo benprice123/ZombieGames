@@ -43,7 +43,6 @@ namespace ZombieGame
         //and if it is greater than 400 on the y axis of the 
         //game panel go back to y -20 and change zombie rectangle
         //to location of zombie
-        // GOING TO CHANGE SO THAT THE ZOMBIE CHASES PLAYER
         public void moveZombie1(Graphics g)
         {
             y += 5;
