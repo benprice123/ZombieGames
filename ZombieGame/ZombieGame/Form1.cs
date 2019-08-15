@@ -168,6 +168,28 @@ namespace ZombieGame
             }
         }
 
+        private void tmrBullet_Tick(object sender, EventArgs e)
+        {
+             //zombie 1 bullet intersect
+            foreach (Zombie z in zombies)
+            {
+                foreach (Bullet b in bullet)
+                {
+                    if (z.zombieRec.IntersectsWith(b.bulletRec))
+                    {
+                        score += 1;
+                        lblScore.Text = score.ToString();
+                        //checkScorelv();
+                        bullet.Remove(b);
+                        z.y = -20; //Relocate to top 
+
+                        break;
+                    }
+
+                }
+            }
+        }
+
         private void Form_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = false; } //left key released

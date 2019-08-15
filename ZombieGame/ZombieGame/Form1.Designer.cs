@@ -226,6 +226,10 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
+            // tmrBullet
+            // 
+            this.tmrBullet.Tick += new System.EventHandler(this.tmrBullet_Tick);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
