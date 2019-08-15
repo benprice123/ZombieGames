@@ -21,7 +21,7 @@ namespace ZombieGame
         List<Bullet> bullet = new List<Bullet>();
         Random yspeed = new Random();
         Player player = new Player();
-        bool left, right, up, down;
+        bool left, right;
         public int score, lives;
         string playerName;
 
@@ -33,9 +33,9 @@ namespace ZombieGame
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
 
             //zombie spacing
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 6; i++)
             {
-                int spacing = 75 + (i * 40);
+                int spacing = 40 + (i * 60);
                 zombies.Add(new Zombie(spacing));
             }
         }
@@ -136,9 +136,9 @@ namespace ZombieGame
                 z.moveZombie1(g);
                 if (z.zombieRec.Location.Y >= 400)
                 {
-                    //missed += 1;
-                  //  lblMissed.Text = missed.ToString();
-                  //  checkMissed();
+                    //lives -= 1;
+                  //  lblLives.Text = lives.ToString();
+                  //  checkLives();
                 }
                 pnlGame.Invalidate();
             }
@@ -156,16 +156,23 @@ namespace ZombieGame
         {
             if (e.KeyData == Keys.Left) { left = true; } //left key pressed
             if (e.KeyData == Keys.Right) { right = true; } //right key pressed
-            if (e.KeyData == Keys.Up) { up = true; } //up key pressed
-            if (e.KeyData == Keys.Down) { down = true; } //down key pressed
+            
+        }
+
+        private void pnlGame_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                bullet.Add(new Bullet(player.playerRec));
+
+            }
         }
 
         private void Form_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = false; } //left key released
             if (e.KeyData == Keys.Right) { right = false; } //right key released
-            if (e.KeyData == Keys.Up) { up = false; } //up key released
-            if (e.KeyData == Keys.Down) { down = false; } //down key released
+           
         }
 
 
@@ -176,22 +183,12 @@ namespace ZombieGame
         {
           if(left)
             {
-                player.rotationAngle -= 10;
+                player.x -= 8;
             }
 
-          if(right)
+            if (right)
             {
-                player.rotationAngle += 10;
-            }
-
-          if(up)
-            {
-                player.y += 1;
-            }
-
-          if(down)
-            {
-                player.y -= 1;
+                player.x += 8;
             }
         }
 
