@@ -22,7 +22,7 @@ namespace ZombieGame
         public Zombie(int xspacing )
         {
             x = xspacing;
-            y = -20;
+            y = -40;
             width = 40;
             height = 40;
             zombieImage = Image.FromFile("Zombie1.png");
