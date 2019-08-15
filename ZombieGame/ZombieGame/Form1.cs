@@ -277,11 +277,26 @@ namespace ZombieGame
         {
              time += 1;
             lblTime.Text = time.ToString();
+            checkTime();
+
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkTime()
+        {
+            if (time >= 60)
+            {
+                tmrBullet.Enabled = false;
+                tmrPlayer.Enabled = false;
+                tmrTime.Enabled = false;
+                tmrZombie1.Enabled = false;
+                tmrZombie2.Enabled = false;
+                MessageBox.Show("GAME OVER. Check Highscores");
+            }
         }
 
         private void checkScore()
