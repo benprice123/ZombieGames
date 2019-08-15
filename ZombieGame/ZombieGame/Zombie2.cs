@@ -23,8 +23,8 @@ namespace ZombieGame
         {
             x = x2spacing;
             y = -20;
-            width = 45;
-            height = 45;
+            width = 20;
+            height = 20;
             zombie2Image = Image.FromFile("Zombie1.png");
             zombie2Rec = new Rectangle(x, y, width, height);
         }
@@ -32,7 +32,7 @@ namespace ZombieGame
         //methods for the zombie class
         //draw zombie
         //this draws the zombie and rectangle
-        public void drawZombie(Graphics g)
+        public void drawZombie2(Graphics g)
         {
             zombie2Rec = new Rectangle(x, y, width, height);
             g.DrawImage(zombie2Image, zombie2Rec);
@@ -43,7 +43,7 @@ namespace ZombieGame
         //and if it is greater than 400 on the y axis of the 
         //game panel go back to y -20 and change zombie rectangle
         //to location of zombie
-        public void moveZombie1(Graphics g)
+        public void moveZombie2(Graphics g)
         {
             y += 5;
 

@@ -121,15 +121,20 @@
             // 
             this.tmrZombie1.Tick += new System.EventHandler(this.tmrZombie1_Tick);
             // 
+            // tmrZombie2
+            // 
+            this.tmrZombie2.Tick += new System.EventHandler(this.tmrZombie2_Tick);
+            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(61, 43);
+            this.lblTitle.Location = new System.Drawing.Point(24, 43);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(291, 42);
+            this.lblTitle.Size = new System.Drawing.Size(364, 42);
             this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "Zombie Escape";
+            this.lblTitle.Text = "Zombie Apocalypse";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // txtName
             // 

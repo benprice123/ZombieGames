@@ -23,8 +23,8 @@ namespace ZombieGame
         {
             x = xspacing;
             y = -20;
-            width = 20;
-            height = 20;
+            width = 40;
+            height = 40;
             zombieImage = Image.FromFile("Zombie1.png");
             zombieRec = new Rectangle(x, y, width, height);
         }

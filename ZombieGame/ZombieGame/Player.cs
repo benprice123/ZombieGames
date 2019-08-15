@@ -22,8 +22,8 @@ namespace ZombieGame
 
         public Player()
         {
-            x = 200;
-            y = 175;
+            x = 180;
+            y = 355;
             width = 30;
             height = 30;
            

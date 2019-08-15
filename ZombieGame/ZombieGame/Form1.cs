@@ -17,7 +17,7 @@ namespace ZombieGame
         //declare all of stuff for the form
         Graphics g;
         List<Zombie> zombies = new List<Zombie>();
-        //List<Zombie2> zombies2 = new List<Zombie2>();
+        List<Zombie2> zombies2 = new List<Zombie2>();
         List<Bullet> bullet = new List<Bullet>();
         Random yspeed = new Random();
         Player player = new Player();
@@ -33,10 +33,15 @@ namespace ZombieGame
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
 
             //zombie spacing
+            for (int i = 0; i < 3; i++)
+            {
+                int spacing = 20 + (i * 150);
+                zombies.Add(new Zombie(spacing));
+            }
             for (int i = 0; i < 6; i++)
             {
                 int spacing = 40 + (i * 60);
-                zombies.Add(new Zombie(spacing));
+                zombies2.Add(new Zombie2(spacing));
             }
         }
 
@@ -49,6 +54,16 @@ namespace ZombieGame
             {
 
                 z.drawZombie(g);
+            }
+
+            //if tmrZombielv2 is going the draw zombies for level 2
+            if (tmrZombie2.Enabled == true)
+            {
+                foreach (Zombie2 z2 in zombies2)
+                {
+                    z2.drawZombie2(g);
+
+                }
             }
 
             foreach (Bullet b in bullet)
@@ -69,7 +84,7 @@ namespace ZombieGame
             //disable timers so nothing moves until start is pressed
             tmrPlayer.Enabled = false;
             tmrZombie1.Enabled = false;
-            // tmrZombie2.Enabled = false;
+            tmrZombie2.Enabled = false;
 
             //Show game instructions and focus on text box name after closed
             MessageBox.Show("Use the arrow keys to move player up,down,left and right and use the mouse to aim and shoot. /n Shoot as many zombies as you can before they catch you. /n Enter your name and press start to let the GAMES BEGIN!");
@@ -170,7 +185,7 @@ namespace ZombieGame
 
         private void tmrBullet_Tick(object sender, EventArgs e)
         {
-             //zombie 1 bullet intersect
+            //zombie 1 bullet intersect
             foreach (Zombie z in zombies)
             {
                 foreach (Bullet b in bullet)
@@ -179,7 +194,7 @@ namespace ZombieGame
                     {
                         score += 1;
                         lblScore.Text = score.ToString();
-                        //checkScorelv();
+                        checkScore();
                         bullet.Remove(b);
                         z.y = -20; //Relocate to top 
 
@@ -187,6 +202,44 @@ namespace ZombieGame
                     }
 
                 }
+            }
+
+            //zombie 2 bullet intersect
+            if (tmrZombie2.Enabled == true)
+            {
+                foreach (Zombie2 z2 in zombies2)
+                {
+                    foreach (Bullet b in bullet)
+                    {
+                        if (z2.zombie2Rec.IntersectsWith(b.bulletRec))
+                        {
+                            score += 1;
+                            lblScore.Text = score.ToString();
+                            bullet.Remove(b);
+                            z2.y = -40;//relocate to top
+
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void tmrZombie2_Tick(object sender, EventArgs e)
+        {
+            foreach (Zombie2 z2 in zombies2)
+            {
+                z2.moveZombie2(g);
+                if (z2.zombie2Rec.Location.Y >= 400)
+                {
+
+                    //lives -= 1;
+                    lblLives.Text = lives.ToString();
+                    checkLives();
+                }
+
+                pnlGame.Invalidate();
+
             }
         }
 
@@ -205,18 +258,42 @@ namespace ZombieGame
         {
           if(left)
             {
-                player.x -= 8;
+                player.x -= 10;
             }
 
             if (right)
             {
-                player.x += 8;
+                player.x += 10;
             }
         }
 
-       
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
 
-        
         }
+
+        private void checkLives()
+        {
+            if (lives <= 0)
+            {
+                tmrBullet.Enabled = false;
+                tmrPlayer.Enabled = false;
+                tmrZombie1.Enabled = false;
+                tmrZombie2.Enabled = false;
+                MessageBox.Show("You have been DEVOURED. Try Again!");
+            }
+        }
+
+        private void checkScore()
+        {
+            if (score >= 2)
+            {
+
+                tmrZombie2.Enabled = true;
+            }
+        }
+
+
+      }
     }
 
