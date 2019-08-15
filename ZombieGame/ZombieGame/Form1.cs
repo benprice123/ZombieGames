@@ -22,7 +22,7 @@ namespace ZombieGame
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right;
-        public int score, lives;
+        public int score, missed, time;
         string playerName;
 
         public Form()
@@ -38,7 +38,7 @@ namespace ZombieGame
                 int spacing = 20 + (i * 150);
                 zombies.Add(new Zombie(spacing));
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 int spacing = 40 + (i * 60);
                 zombies2.Add(new Zombie2(spacing));
@@ -79,12 +79,16 @@ namespace ZombieGame
         {
             //set score and missed to 0
             score = 0;
-            lives = 3;
+            missed = 0;
+            time = 0;
+
 
             //disable timers so nothing moves until start is pressed
             tmrPlayer.Enabled = false;
             tmrZombie1.Enabled = false;
             tmrZombie2.Enabled = false;
+            tmrTime.Enabled = false;
+            tmrBullet.Enabled = false;
 
             //Show game instructions and focus on text box name after closed
             MessageBox.Show("Use the arrow keys to move player up,down,left and right and use the mouse to aim and shoot. /n Shoot as many zombies as you can before they catch you. /n Enter your name and press start to let the GAMES BEGIN!");
@@ -96,7 +100,7 @@ namespace ZombieGame
         {
 
             lblScore.Text = score.ToString(); //Send the score to the label Score
-            lblLives.Text = lives.ToString();
+            lblMissed.Text = missed.ToString();
 
             playerName = txtName.Text;
 
@@ -106,6 +110,7 @@ namespace ZombieGame
                 MessageBox.Show("Starting");
                 tmrPlayer.Enabled = true;
                 tmrZombie1.Enabled = true;
+                tmrTime.Enabled = true;
                 tmrZombie2.Enabled = false;
                 tmrBullet.Enabled = true;
                 txtName.Enabled = false;
@@ -118,6 +123,7 @@ namespace ZombieGame
                 tmrZombie1.Enabled = false;
                 tmrZombie2.Enabled = false;
                 tmrBullet.Enabled = false;
+                tmrTime.Enabled = false;
 
                 MessageBox.Show("please enter a name using letters only!");
                 txtName.Clear();
@@ -137,6 +143,7 @@ namespace ZombieGame
             tmrZombie1.Enabled = false;
             tmrZombie2.Enabled = false;
             tmrBullet.Enabled = false;
+            tmrTime.Enabled = false;
         }
 
         private void mnuRestart_Click(object sender, EventArgs e)
@@ -151,9 +158,8 @@ namespace ZombieGame
                 z.moveZombie1(g);
                 if (z.zombieRec.Location.Y >= 400)
                 {
-                    //lives -= 1;
-                  //  lblLives.Text = lives.ToString();
-                  //  checkLives();
+                    missed += 1;
+                    lblMissed.Text = missed.ToString();
                 }
                 pnlGame.Invalidate();
             }
@@ -196,7 +202,7 @@ namespace ZombieGame
                         lblScore.Text = score.ToString();
                         checkScore();
                         bullet.Remove(b);
-                        z.y = -20; //Relocate to top 
+                        z.y = -40; //Relocate to top 
 
                         break;
                     }
@@ -216,7 +222,7 @@ namespace ZombieGame
                             score += 1;
                             lblScore.Text = score.ToString();
                             bullet.Remove(b);
-                            z2.y = -40;//relocate to top
+                            z2.x = 420;//relocate to top
 
                             break;
                         }
@@ -230,12 +236,11 @@ namespace ZombieGame
             foreach (Zombie2 z2 in zombies2)
             {
                 z2.moveZombie2(g);
-                if (z2.zombie2Rec.Location.Y >= 400)
+                if (z2.zombie2Rec.Location.X <= 0)
                 {
 
-                    //lives -= 1;
-                    lblLives.Text = lives.ToString();
-                    checkLives();
+                    missed += 1;
+                    lblMissed.Text = missed.ToString();
                 }
 
                 pnlGame.Invalidate();
@@ -256,6 +261,7 @@ namespace ZombieGame
 
         private void tmrPlayer_Tick(object sender, EventArgs e)
         {
+
           if(left)
             {
                 player.x -= 10;
@@ -267,21 +273,15 @@ namespace ZombieGame
             }
         }
 
+        private void tmrTime_Tick(object sender, EventArgs e)
+        {
+             time += 1;
+            lblTime.Text = time.ToString();
+        }
+
         private void lblTitle_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void checkLives()
-        {
-            if (lives <= 0)
-            {
-                tmrBullet.Enabled = false;
-                tmrPlayer.Enabled = false;
-                tmrZombie1.Enabled = false;
-                tmrZombie2.Enabled = false;
-                MessageBox.Show("You have been DEVOURED. Try Again!");
-            }
         }
 
         private void checkScore()

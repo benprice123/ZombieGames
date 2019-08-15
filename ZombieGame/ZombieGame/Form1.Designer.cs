@@ -46,10 +46,11 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblScoretitle = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
-            this.lblLives = new System.Windows.Forms.Label();
+            this.lblMissed = new System.Windows.Forms.Label();
             this.lblScore = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tmrBullet = new System.Windows.Forms.Timer(this.components);
+            this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -190,19 +191,19 @@
             this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.Location = new System.Drawing.Point(3, 279);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(53, 20);
+            this.label.Size = new System.Drawing.Size(67, 20);
             this.label.TabIndex = 5;
-            this.label.Text = "Lives :";
+            this.label.Text = "Missed :";
             // 
-            // lblLives
+            // lblMissed
             // 
-            this.lblLives.AutoSize = true;
-            this.lblLives.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLives.Location = new System.Drawing.Point(62, 279);
-            this.lblLives.Name = "lblLives";
-            this.lblLives.Size = new System.Drawing.Size(18, 20);
-            this.lblLives.TabIndex = 9;
-            this.lblLives.Text = "0";
+            this.lblMissed.AutoSize = true;
+            this.lblMissed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMissed.Location = new System.Drawing.Point(76, 279);
+            this.lblMissed.Name = "lblMissed";
+            this.lblMissed.Size = new System.Drawing.Size(18, 20);
+            this.lblMissed.TabIndex = 9;
+            this.lblMissed.Text = "0";
             // 
             // lblScore
             // 
@@ -218,7 +219,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Silver;
             this.groupBox1.Controls.Add(this.lblTime);
-            this.groupBox1.Controls.Add(this.lblLives);
+            this.groupBox1.Controls.Add(this.lblMissed);
             this.groupBox1.Controls.Add(this.lblScore);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label3);
@@ -234,6 +235,11 @@
             // tmrBullet
             // 
             this.tmrBullet.Tick += new System.EventHandler(this.tmrBullet_Tick);
+            // 
+            // tmrTime
+            // 
+            this.tmrTime.Interval = 1000;
+            this.tmrTime.Tick += new System.EventHandler(this.tmrTime_Tick);
             // 
             // Form
             // 
@@ -278,10 +284,11 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblScoretitle;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.Label lblLives;
+        private System.Windows.Forms.Label lblMissed;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Timer tmrBullet;
+        private System.Windows.Forms.Timer tmrTime;
     }
 }
 
