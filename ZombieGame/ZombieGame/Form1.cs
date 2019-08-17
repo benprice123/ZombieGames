@@ -264,12 +264,12 @@ namespace ZombieGame
 
           if(left)
             {
-                player.x -= 10;
+                player.x -= 15;
             }
 
             if (right)
             {
-                player.x += 10;
+                player.x += 15;
             }
         }
 
