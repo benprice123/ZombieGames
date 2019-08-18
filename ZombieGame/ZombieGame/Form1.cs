@@ -134,7 +134,7 @@ namespace ZombieGame
 
         private void mnuQuit_Click(object sender, EventArgs e)
         {
-          
+            Application.Exit();
         }
 
         private void mnuStop_Click(object sender, EventArgs e)
