@@ -51,6 +51,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tmrBullet = new System.Windows.Forms.Timer(this.components);
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
+            this.lbl12 = new System.Windows.Forms.Label();
+            this.lblKills = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -179,7 +181,7 @@
             // 
             this.lblScoretitle.AutoSize = true;
             this.lblScoretitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScoretitle.Location = new System.Drawing.Point(1, 164);
+            this.lblScoretitle.Location = new System.Drawing.Point(8, 214);
             this.lblScoretitle.Name = "lblScoretitle";
             this.lblScoretitle.Size = new System.Drawing.Size(59, 20);
             this.lblScoretitle.TabIndex = 4;
@@ -189,7 +191,7 @@
             // 
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(3, 279);
+            this.label.Location = new System.Drawing.Point(8, 159);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(67, 20);
             this.label.TabIndex = 5;
@@ -199,7 +201,7 @@
             // 
             this.lblMissed.AutoSize = true;
             this.lblMissed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMissed.Location = new System.Drawing.Point(76, 279);
+            this.lblMissed.Location = new System.Drawing.Point(81, 159);
             this.lblMissed.Name = "lblMissed";
             this.lblMissed.Size = new System.Drawing.Size(18, 20);
             this.lblMissed.TabIndex = 9;
@@ -209,7 +211,7 @@
             // 
             this.lblScore.AutoSize = true;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.Location = new System.Drawing.Point(58, 164);
+            this.lblScore.Location = new System.Drawing.Point(73, 214);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(18, 20);
             this.lblScore.TabIndex = 8;
@@ -218,6 +220,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Silver;
+            this.groupBox1.Controls.Add(this.lblKills);
+            this.groupBox1.Controls.Add(this.lbl12);
             this.groupBox1.Controls.Add(this.lblTime);
             this.groupBox1.Controls.Add(this.lblMissed);
             this.groupBox1.Controls.Add(this.lblScore);
@@ -240,6 +244,26 @@
             // 
             this.tmrTime.Interval = 1000;
             this.tmrTime.Tick += new System.EventHandler(this.tmrTime_Tick);
+            // 
+            // lbl12
+            // 
+            this.lbl12.AutoSize = true;
+            this.lbl12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl12.Location = new System.Drawing.Point(8, 116);
+            this.lbl12.Name = "lbl12";
+            this.lbl12.Size = new System.Drawing.Size(44, 20);
+            this.lbl12.TabIndex = 11;
+            this.lbl12.Text = "Kills :";
+            // 
+            // lblKills
+            // 
+            this.lblKills.AutoSize = true;
+            this.lblKills.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKills.Location = new System.Drawing.Point(58, 116);
+            this.lblKills.Name = "lblKills";
+            this.lblKills.Size = new System.Drawing.Size(18, 20);
+            this.lblKills.TabIndex = 12;
+            this.lblKills.Text = "0";
             // 
             // Form
             // 
@@ -289,6 +313,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Timer tmrBullet;
         private System.Windows.Forms.Timer tmrTime;
+        private System.Windows.Forms.Label lblKills;
+        private System.Windows.Forms.Label lbl12;
     }
 }
 

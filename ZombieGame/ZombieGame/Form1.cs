@@ -22,7 +22,7 @@ namespace ZombieGame
         Random yspeed = new Random();
         Player player = new Player();
         bool left, right;
-        public int score, missed, time;
+        public int score, missed, kills, time;
         string playerName;
 
         public Form()
@@ -77,7 +77,7 @@ namespace ZombieGame
 
         private void Form_Load(object sender, EventArgs e)
         {
-            //set score and missed to 0
+            kills = 0;
             score = 0;
             missed = 0;
             time = 0;
@@ -98,7 +98,7 @@ namespace ZombieGame
 
         private void mnuStart_Click(object sender, EventArgs e)
         {
-
+            lblKills.Text = kills.ToString();
             lblScore.Text = score.ToString(); //Send the score to the label Score
             lblMissed.Text = missed.ToString();
 
@@ -160,6 +160,8 @@ namespace ZombieGame
                 {
                     missed += 1;
                     lblMissed.Text = missed.ToString();
+                    score -= 1;
+                    lblScore.Text = score.ToString();
                 }
                 pnlGame.Invalidate();
             }
@@ -198,6 +200,8 @@ namespace ZombieGame
                 {
                     if (z.zombieRec.IntersectsWith(b.bulletRec))
                     {
+                        kills += 1;
+                        lblKills.Text = kills.ToString();
                         score += 1;
                         lblScore.Text = score.ToString();
                         checkScore();
@@ -219,6 +223,8 @@ namespace ZombieGame
                     {
                         if (z2.zombie2Rec.IntersectsWith(b.bulletRec))
                         {
+                            kills += 1;
+                            lblKills.Text = kills.ToString();
                             score += 1;
                             lblScore.Text = score.ToString();
                             bullet.Remove(b);
@@ -241,6 +247,8 @@ namespace ZombieGame
 
                     missed += 1;
                     lblMissed.Text = missed.ToString();
+                    score -= 1;
+                    lblScore.Text = score.ToString();
                 }
 
                 pnlGame.Invalidate();
@@ -303,7 +311,6 @@ namespace ZombieGame
         {
             if (score >= 2)
             {
-
                 tmrZombie2.Enabled = true;
             }
         }
